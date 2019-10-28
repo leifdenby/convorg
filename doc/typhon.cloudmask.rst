@@ -1,4 +1,0 @@
-cloudmask
-=========
-
-.. automodule:: typhon.cloudmask
