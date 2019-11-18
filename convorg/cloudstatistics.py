@@ -77,7 +77,7 @@ def neighbor_distance(cloudproperties):
     return neighbor_distance
 
 
-def iorg(neighbor_distance, cloudmask):
+def _iorg(neighbor_distance, cloudmask):
     """Calculate the cloud cluster index 'I_org'.
 
     See also: 
@@ -111,8 +111,13 @@ def iorg(neighbor_distance, cloudmask):
 
     return sc.integrate.trapz(y=nncdf, x=nncdf_poisson)
 
+def iorg(cloudmask):
+    cloud_props = get_cloudproperties(cloudmask)
+    dists = neighbor_distance(cloud_props)
+    return _iorg(neighbor_distance=dists, cloudmask=cloudmask)
 
-def scai(cloudproperties, cloudmask, connectivity=1):
+
+def _scai(cloudproperties, cloudmask, connectivity=1):
     """Calculate the 'Simple Convective Aggregation Index (SCAI)'.  
 
     The SCAI is defined as the ratio of convective disaggregation
@@ -174,3 +179,7 @@ def scai(cloudproperties, cloudmask, connectivity=1):
     L = np.sqrt(cloudmask.shape[0]**2 + cloudmask.shape[1]**2)
 
     return N / N_max * D0 / L * 1000
+
+def scai(cloudmask):
+    cloud_props = get_cloudproperties(cloudmask)
+    return _scai(cloudproperties=cloud_props, cloudmask=cloudmask)
