@@ -1,19 +1,3 @@
-"""Typhon is a collection of tools for atmospheric research.
-
-It provides:
-- reading and writing routines for ARTS XML files
-- an API to run and access ARTS through Python
-- conversion routines for various physical quantities
-- a tool kit to collocate different data sets (e.g. satellite, ship, ...)
-- different retrievals (e.g. QRNN, SPARE-ICE, ...)
-- a subset of the cmocean color maps
-- functions to calculate and analyse cloud masks
-- various plotting utility functions
-- functions for geodetic and geographical calculations
-- and much more...
-
-Further information on ARTS can be found on http://www.radiativetransfer.org/.
-"""
 
 import logging
 import sys
@@ -25,9 +9,6 @@ from setuptools import setup, find_packages
 from codecs import open
 from os.path import (abspath, dirname, join)
 
-import builtins
-
-builtins.__TYPHON_SETUP__ = True
 DOCLINES = (__doc__ or '').split("\n")
 
 try:
@@ -45,12 +26,10 @@ except subprocess.CalledProcessError:
 
     # Partse version number from module-level ASCII file. This prevents
     # double-entry bookkeeping).
-    __version__ = open(join(dirname(__file__), 'typhon', 'VERSION')).read().strip()
-
-here = abspath(dirname(__file__))
+    __version__ = open(join(dirname(__file__), 'convorg', 'VERSION')).read().strip()
 
 setup(
-    name='typhon',
+    name='convorg',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
@@ -61,11 +40,10 @@ setup(
     long_description="\n".join(DOCLINES[2:]),
 
     # The project's main homepage.
-    url='https://github.com/atmtools/typhon',
+    url='https://github.com/leifdenby/convorg',
 
     # Author details
-    author='The Typhon developers',
-    author_email='typhon.mi@lists.uni-hamburg.de',
+    author_email='l.c.denby@leeds.ac.uk',
 
     # Choose your license
     license='MIT',
@@ -76,7 +54,7 @@ setup(
         #   3 - Alpha
         #   4 - Beta
         #   5 - Production/Stable
-        'Development Status :: 4 - Beta',
+        'Development Status :: 3 - Alpha',
 
         # Indicate who your project is intended for
         'Intended Audience :: Science/Research',
@@ -107,15 +85,9 @@ setup(
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=[
         'docutils',
-        'imageio',
         'matplotlib>=1.4',
         'netCDF4>=1.1.1',
-        'numba',
-        'numexpr',
-        'numpy>=1.13',
-        'pandas',
         'scikit-image',
-        'scikit-learn',
         'scipy>=0.15.1',
         'setuptools>=0.7.2',
         'xarray>=0.10.2',
