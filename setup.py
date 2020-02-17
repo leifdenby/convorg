@@ -3,6 +3,9 @@ from setuptools import setup, find_packages
 # note: version is maintained inside convorg/VERSION
 __version__ = open('convorg/VERSION').read()
 
+with open('requirements.txt') as f:
+    requirements = f.read().splitlines()
+
 setup(
     name='convorg',
     packages=find_packages(exclude=['contrib', 'tests', 'docs']),
@@ -14,5 +17,5 @@ setup(
     # Additional requirements to make `$ python setup.py test` work.
     setup_requires=['pytest-runner'],
     tests_require=['pytest'],
-
+    install_requires=requirements,
 )
