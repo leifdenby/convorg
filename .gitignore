@@ -4,3 +4,4 @@
 doc/_build
 doc/generated
 typhon.egg-info
+.pytest_cache/
