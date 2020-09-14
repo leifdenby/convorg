@@ -9,3 +9,6 @@ def test_iorg():
 
 def test_scai():
     convorg.scai(cloudmask=CLOUD_MASK)
+
+def test_hausdorff():
+    convorg.hausdorff_dimension(cloudmask=CLOUD_MASK)
